@@ -13,7 +13,7 @@
 * `--register=no`
 
 ### Systemd-nspawn X11
-* for X11 access from container, first allow local xserver access with `xhost +local:`
+* for X11 access from container, first allow local xserver access with `xhost +local:`(not sure we still need this)
 ```
 --setenv=DISPLAY=$DISPLAY --bind-ro=/tmp/.X11-unix
 ```
@@ -36,3 +36,6 @@
 * `--bind=/dev/input`
 * `--property='DeviceAllow=/dev/input/event0 rw'`
 * `--property='DeviceAllow=/dev/input/event1 rw'`
+
+### Systemd-nspawn capabillities
+* `--capability=CAP_NET_ADMIN`
