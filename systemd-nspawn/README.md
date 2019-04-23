@@ -38,4 +38,7 @@
 * `--property='DeviceAllow=/dev/input/event1 rw'`
 
 ### Systemd-nspawn capabillities
-* `--capability=CAP_NET_ADMIN`
+* `--capability=CAP_NET_ADMIN` to let container create tunnels and manage net stuff
+* `--private-network` to remove networking, unfortunally X11 needs this...
+* drop all capabilities with `--drop-capability=CAP_AUDIT_CONTROL,CAP_AUDIT_WRITE,CAP_CHOWN,CAP_DAC_OVERRIDE,CAP_DAC_READ_SEARCH,CAP_FOWNER,CAP_FSETID,CAP_IPC_OWNER,CAP_KILL,CAP_LEASE,CAP_LINUX_IMMUTABLE,CAP_MKNOD,CAP_NET_BIND_SERVICE,CAP_NET_BROADCAST,CAP_NET_RAW,CAP_SETFCAP,CAP_SETGID,CAP_SETPCAP,CAP_SETUID,CAP_SYS_ADMIN,CAP_SYS_BOOT,CAP_SYS_CHROOT,CAP_SYS_NICE,CAP_SYS_PTRACE,CAP_SYS_RESOURCE,CAP_SYS_TTY_CONFIG,CAP_NET_ADMIN`
+
