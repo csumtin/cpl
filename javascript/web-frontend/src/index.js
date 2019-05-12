@@ -1,3 +1,3 @@
 "use strict";
-document.addEventListener("DOMContentLoaded", _ => {
+document.addEventListener("DOMContentLoaded", function() {
 });
