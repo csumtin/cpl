@@ -6,7 +6,14 @@ const fs = require("fs");
 const server = https.createServer({"key" : fs.readFileSync("privkey.pem"), "cert" : fs.readFileSync("fullchain.pem")}, function(request, response) {
   console.log(request.method, request.url);
 
-  if(request.method === "POST") {
+  if(request.method === "OPTIONS") {
+    response.writeHead(204,
+      {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "Content-Type"
+      });
+    response.end();
+  } else if(request.method === "POST") {
     // check request.url?
     getPostData().then(function(postData) {
       // sample jsonrpc post
@@ -14,9 +21,16 @@ const server = https.createServer({"key" : fs.readFileSync("privkey.pem"), "cert
       console.log(postData["id"], postData["method"], postData["params"]);
       
       const clientRequestID = generateRandomID();
-      response.writeHead(200, {"content-type": "application/json"});
+      response.writeHead(200,
+        {
+          "Access-Control-Allow-Origin": "*",
+          "content-type": "application/json"
+        });
       response.end(JSON.stringify({"jsonrpc": "2.0", "id" : clientRequestID, "result" : "hello"}), "utf-8");
     });
+  } else {
+    response.writeHead(400);
+    response.end();
   }
   
   function getPostData() {
