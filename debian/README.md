@@ -74,7 +74,8 @@
 * ip link set eth0 up (bring up interface)
 * dhclient (will set up dhcp)
 * netstat
-* iptables
+* nftables
+* nmcli
 
 ## SystemD
 * systemctl status service
