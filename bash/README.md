@@ -21,6 +21,13 @@ while true; do
 done
 ```
 
+* for loop
+```
+for i in {1..10}; do
+  echo "$i"
+done
+```
+
 * functions
 ```
 hello() {
